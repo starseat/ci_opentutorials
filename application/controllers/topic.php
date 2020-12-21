@@ -8,7 +8,12 @@ class Topic extends CI_Controller
     // public function index() 은 ~/topic 입력했을떄의 index 페이지임.
     public function index()
     {
-        echo '토픽 페이지';
+        //echo '토픽 페이지';
+
+        // application/views/topic.php 호출
+        $this->load->view('topic/header');
+        $this->load->view('topic');
+        $this->load->view('topic/footer');
     }
 
     // public function 으로 만드는 함수들은
@@ -21,7 +26,11 @@ class Topic extends CI_Controller
 
     // ~/topic/get/1  이런식으로 get 뒤에 param 을 받고 싶으면 다음과 같이 사용
     public function get($id) {
-        echo '토픽 - get ' . $id;
+        //echo '토픽 - get ' . $id;
+        // array 에서 첫번째 'id' 에 값 담아서 화면으로 넘김
+        $this->load->view('topic/header');
+        $this->load->view('topic_get', array('id' => $id) );
+        $this->load->view('topic/footer');
     }
 
     
