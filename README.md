@@ -9,6 +9,10 @@
  - ci v3.x: https://codeigniter.com/userguide3/index.html
  - ci v3.x 한글메뉴얼: http://www.ciboard.co.kr/user_guide/kr/
 
+### 강의 관련 링크
+ - controller: https://codeigniter-kr.org/user_guide_2.1.0/general/controllers.html
+
+
 
 홈페이지 : http://www.codeigniter.com/
 메뉴얼 : http://www.codeigniter.com/user_guide/
