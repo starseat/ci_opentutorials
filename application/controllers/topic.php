@@ -10,9 +10,19 @@ class Topic extends CI_Controller
     {
         //echo '토픽 페이지';
 
+        // database 로드
+        $this->load->database();
+        $this->load->model('topic_model');  // models 에 있는 파일명 로드
+                                           // 파일명에서 첫글자가 대문자인 클래스 찾음
+        $data = $this->topic_model->gets(); // topic_model 은 Topic_model class 로 생성된 object 임
+        // foreach($data as $entry) {
+        //     //var_dump($entry);
+        //     var_dump($entry->title);
+        // }
+
         // application/views/topic.php 호출
         $this->load->view('topic/header');
-        $this->load->view('topic');
+        $this->load->view('topic', array('topics' => $data));
         $this->load->view('topic/footer');
     }
 

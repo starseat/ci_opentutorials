@@ -1,6 +1,7 @@
 # ci_opentutorials
  - php CodeIgniter
  - 생활코딩 강좌: https://opentutorials.org/module/327/3824
+                 (https://opentutorials.org/course/697/3824)
  
  ci version: CodeIgniter-3.1.11
  - download: https://codeigniter.com/download
