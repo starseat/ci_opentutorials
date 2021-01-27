@@ -58,7 +58,7 @@ class Topic extends CI_Controller
         $this->load->view('topic/header');
         $this->load->view('topic/list', array('topics' => $topics));
         //$this->load->view('topic_get', array('id' => $id) );
-        $this->load->view('topic_get', array('topic' => $topic));
+        $this->load->view('topic/get', array('topic' => $topic));
         $this->load->view('topic/footer');
     }
 

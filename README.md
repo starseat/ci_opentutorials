@@ -13,6 +13,7 @@
 ### 강의 관련 링크
  - controller: https://codeigniter-kr.org/user_guide_2.1.0/general/controllers.html
  - view : https://codeigniter-kr.org/user_guide_2.1.0/general/views.html
+ - model : https://codeigniter-kr.org/user_guide_2.1.0/general/models.html
 
 
 홈페이지 : http://www.codeigniter.com/
