@@ -14,6 +14,7 @@
  - controller: https://codeigniter-kr.org/user_guide_2.1.0/general/controllers.html
  - view : https://codeigniter-kr.org/user_guide_2.1.0/general/views.html
  - model : https://codeigniter-kr.org/user_guide_2.1.0/general/models.html
+ - helper(lib - function) : http://codeigniter-kr.org/user_guide_2.1.0/general/helpers.html
 
 
 홈페이지 : http://www.codeigniter.com/

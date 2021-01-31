@@ -58,6 +58,9 @@ class Topic extends CI_Controller
         $this->load->view('topic/header');
         $this->load->view('topic/list', array('topics' => $topics));
         //$this->load->view('topic_get', array('id' => $id) );
+
+        // 헬퍼 사용
+        $this->load->helper(array('url', 'HTML', 'korean')); // korean 이라고 써주면 korean* 파일을 찾아서 view 에 적용함
         $this->load->view('topic/get', array('topic' => $topic));
         $this->load->view('topic/footer');
     }
