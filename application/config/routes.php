@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/* 여기에 uri 라우팅 규칭 적용 */
+
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -49,6 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
-$route['404_override'] = '';
+
+$route['topic/(:num)'] = 'topic/get/$i';
+$route['post/(:num)'] = 'topic/get/$i';
+$route['topic/([a-z]+)/([a-z]+)/(\d+)'] = "$1/$2/$3";
+
+//$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'topic/index';
+$route['404_override'] = 'errors/notfound';
 $route['translate_uri_dashes'] = FALSE;
+
+?>
