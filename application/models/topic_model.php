@@ -31,4 +31,18 @@ class Topic_model extends CI_Model
         // 이것과 동일
         // return $this->db->query("SELECT * FROM topic WHERE id=" . $topic_id)->row();
     }
+
+    public function add($title, $description) {
+        // sql 이 생성되기 전에 created 가 now() 를 대입하는데 3번째 파라미터를 false 로 하여 문자열이 아닌 그대로 들어가게함.
+        $this->db->set('created', 'NOW()', false); 
+
+        $this->db->insert('topic', array(
+            'title' => $title, 
+            'description' => $description
+        ));
+
+        //echo $this->db->last_query(); // 마지막에 생성된 sql 확인
+
+        return $this->db->insert_id();  // 마지막에 생성된 id 값 return
+    }
 }
