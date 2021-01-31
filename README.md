@@ -6,6 +6,11 @@
  ci version: CodeIgniter-3.1.11
  - download: https://codeigniter.com/download
 
+config 분기
+ - 개발용 : http://localhost/ci_opentutorials/dev.php
+ - 운영용 : http://localhost/ci_opentutorials/index.php
+
+
 ## 메뉴얼
  - ci v3.x: https://codeigniter.com/userguide3/index.html
  - ci v3.x 한글메뉴얼: http://www.ciboard.co.kr/user_guide/kr/
