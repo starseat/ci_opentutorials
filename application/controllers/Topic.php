@@ -46,6 +46,8 @@ class Topic extends CI_Controller
 
     // function name 앞에 _ 를 붙이면 uri routing 에 대한 private method 가 됨.
     function _head() {
+        $this->load->config('topic_config');  // 파일명 써줘야함.
+
         $this->load->view('topic/header');
         $topics = $this->topic_model->gets();
         $this->load->view('topic/list', array('topics' => $topics));

@@ -14,7 +14,8 @@
 <body>
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
-            <div class="container"> <!-- -fluid -->
+            <div class="container">
+                <!-- -fluid -->
 
                 <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -34,5 +35,15 @@
             </div>
         </div>
     </div>
-    <div class="container"> <!-- -fluid -->
+
+    <div class="container">
+        <!-- -fluid -->
+        <?php if ($this->config->item('is_dev')) { ?>
+            <div class="well span12">
+                개발 중 입니다.
+            </div>
+        <?php } ?>
+        <?php
+        // echo $this->config->item('base_url'); // config 가져오는법 테스트
+        ?>
         <div class="row-fluid">

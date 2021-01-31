@@ -53,22 +53,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-//define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
-define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');  // 개발시 용이하도록 임시로 development 로 처리
-
-/**
- *  $_SERVER['CI_ENV']) 이걸 제대로 사용하려면
- * (apache 기준) httpd-vhosts.conf 파일에서
- * 
- * <VirtualHost *:80>
- *   ...
- *   SetEnv CI_ENV 'development'        <- 이부분 추가
- *   <Directory />
- *   ...
- * 
- * </VirtualHost>
- */
-
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
  *---------------------------------------------------------------
