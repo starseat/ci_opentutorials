@@ -12,7 +12,7 @@ class Topic extends CI_Controller
         // 중복되는 부분 여기다가 옮기기
         $this->load->database();
         $this->load->model('topic_model');
-
+        log_message('debug', 'topic 초기화');
     }
     // public function index() 은 ~/topic 입력했을떄의 index 페이지임.
     public function index()
@@ -81,7 +81,16 @@ class Topic extends CI_Controller
     public function get($id) {
         $this->_head();
 
+        log_message('debug', 'topic get 호출 id: ' . $id);
         $topic = $this->topic_model->get($id);
+        if(empty($topic)) {
+            log_message('error', 'topic data is empty.');
+            show_error('topic data is empty.');
+        }
+        else {
+            log_message('info', var_export($topic, true));  // $topic 같은 객체를 보기 쉽게 변환해줌
+        }       
+        
         $this->load->helper(array('url', 'HTML', 'korean'));
         $this->load->view('topic/get', array('topic' => $topic));
 

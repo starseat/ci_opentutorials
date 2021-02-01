@@ -20,6 +20,9 @@ config 분기
  - view : https://codeigniter-kr.org/user_guide_2.1.0/general/views.html
  - model : https://codeigniter-kr.org/user_guide_2.1.0/general/models.html
  - helper(lib - function) : http://codeigniter-kr.org/user_guide_2.1.0/general/helpers.html
+ - debug : 
+   - https://opentutorials.org/module/411/3648
+   - https://codeigniter-kr.org/user_guide_2.1.0/general/errors.html
 
 
 홈페이지 : http://www.codeigniter.com/

@@ -211,9 +211,9 @@ $config['allow_get_array'] = TRUE;
 |
 |	0 = Disables logging, Error logging TURNED OFF
 |	1 = Error Messages (including PHP errors)
-|	2 = Debug Messages
-|	3 = Informational Messages
-|	4 = All Messages
+|	2 = Debug Messages                           + 1
+|	3 = Informational Messages                   + 2, 1
+|	4 = All Messages                             + 3, 2, 1
 |
 | You can also pass an array with threshold levels to show individual error types
 |
@@ -223,7 +223,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 4;  // default: 0
 
 /*
 |--------------------------------------------------------------------------
@@ -234,7 +234,7 @@ $config['log_threshold'] = 0;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = '';
+$config['log_path'] = '';  // 쓰기권한 있어야 함
 
 /*
 |--------------------------------------------------------------------------
