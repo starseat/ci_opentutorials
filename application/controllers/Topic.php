@@ -150,7 +150,7 @@ class Topic extends CI_Controller
         // 아래 내용은 CI 에서 제공하는 정보임. 그냥 하면 됨.
 
         // 사용자가 업로드 한 파일을 /static/upload/ 디렉토리에 저장한다.
-        $config['upload_path'] = './static/upload';
+        $config['upload_path'] = '/ci_opentutorials/static/upload';
         // git,jpg,png 파일만 업로드를 허용한다.
         $config['allowed_types'] = 'gif|jpg|png';
         // 허용되는 파일의 최대 사이즈 (kb) 
@@ -178,6 +178,52 @@ class Topic extends CI_Controller
             // 임시
             echo 'success';
             var_dump($data);
+        }
+    }
+
+    // ckeditor 용
+    public function upload_receive_from_ck() {
+        // 아래 내용은 CI 에서 제공하는 정보임. 그냥 하면 됨.
+
+        // 사용자가 업로드 한 파일을 /static/upload/ 디렉토리에 저장한다.
+        $config['upload_path'] = '/ci_opentutorials/static/upload';
+        // git,jpg,png 파일만 업로드를 허용한다.
+        $config['allowed_types'] = 'gif|jpg|png';
+        // 허용되는 파일의 최대 사이즈 (kb) 
+        $config['max_size'] = '0';  // 0 이면 php.ini 참조. php.ini 는 defaualt 로 2mb
+        // 이미지인 경우 허용되는 최대 폭
+        $config['max_width']  = '0';  // 픽셀단위. 0이면 제한 X
+        // 이미지인 경우 허용되는 최대 높이
+        $config['max_height']  = '0'; // 픽셀단위. 0이면 제한 X 
+
+        $this->load->library('upload', $config);
+
+        // 위 까지는 설정임.
+        // 여기부터가 실제로 파일 업로드 처리
+        if(!$this->upload->do_upload('upload')) {  // ckeditor 에서는 <input type="file" name="upload"> 로 만들어짐
+            //$error = array('error' => $this->upload->display_errors());
+            //$this->load->view('upload_form', $error);
+
+            // 임시로 에러 메시지 출력
+            $error_msg = $this->upload->display_errors('', '');  // 파라미터 2개를 공백으로 주면 html 태그 삭제함
+            echo $error_msg;
+            echo "<script>alert('업로드에 실패하였습니다. (" . $error_msg . ")');</script>";
+            
+        }
+        else {
+            $data = array('upload_data' => $this->upload->data());
+            //$this->load->view('upload_success', $data);
+
+            // 화면을 만들어서 전송해야되지만 임시로 이렇게 함.
+            //echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction('콜백의 식별 ID 값', '파일의 URL', '전송완료 메시지')</script>";
+
+            // get 방식으로 데이터를 가져옴
+            $CKEditorFuncName = $this->input->get('CKEditorFuncNum');
+            $filename = $data['filen_name'];
+            $url = '/static/upload' . $filename; // 상대경로로 변환
+
+            echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction('" . $CKEditorFuncName . "', '" . $url . "', '업로드 성공')</script>";
+            //var_dump($data);
         }
 
     }
