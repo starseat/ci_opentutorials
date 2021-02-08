@@ -23,8 +23,11 @@ config 분기
  - debug : 
    - https://opentutorials.org/module/411/3648
    - https://codeigniter-kr.org/user_guide_2.1.0/general/errors.html
+ - file upload : https://codeigniter-kr.org/user_guide_2.1.0/libraries/file_uploading.html
 
 
 홈페이지 : http://www.codeigniter.com/
 메뉴얼 : http://www.codeigniter.com/user_guide/
 한국 사용자 포럼 : http://codeigniter-kr.org/
+CK Editor : https://ckeditor.com/ckeditor-4/download/
+CK Editor 메뉴얼 : https://ckeditor.com/docs/ckeditor4/latest/guide/dev_installation.html

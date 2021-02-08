@@ -30,10 +30,19 @@ class Topic extends CI_Controller
         // }
 
         // application/views/topic.php 호출
-        $this->load->view('topic/header');
-        $this->load->view('topic/list', array('topics' => $topics));
+        // $this->load->view('topic/header');
+        // $this->load->view('topic/list', array('topics' => $topics));
+        // $this->load->view('topic', array('topics' => $topics));
+        // $this->load->view('topic/footer');
+
+        // _header(), _footer() 호출로 변경
+        $this->_head();
         $this->load->view('topic', array('topics' => $topics));
-        $this->load->view('topic/footer');
+        $this->_footer();
+    }
+
+    public function list() {
+        $this->index();
     }
 
     // public function 으로 만드는 함수들은
@@ -132,6 +141,51 @@ class Topic extends CI_Controller
             $this->load->helper('url');  // redirect 사용 가능
             redirect('/topic/get/' . $topic_id);  // /ci_opentutorials/index.php/ 은 입력 안해도 됨.
         }        
+
+        $this->_footer();
+    }
+
+    // 사용자가 전송한 데이터 받는 부분
+    public function upload_receive() {
+        // 아래 내용은 CI 에서 제공하는 정보임. 그냥 하면 됨.
+
+        // 사용자가 업로드 한 파일을 /static/upload/ 디렉토리에 저장한다.
+        $config['upload_path'] = './static/upload';
+        // git,jpg,png 파일만 업로드를 허용한다.
+        $config['allowed_types'] = 'gif|jpg|png';
+        // 허용되는 파일의 최대 사이즈 (kb) 
+        $config['max_size'] = '0';  // 0 이면 php.ini 참조. php.ini 는 defaualt 로 2mb
+        // 이미지인 경우 허용되는 최대 폭
+        $config['max_width']  = '0';  // 픽셀단위. 0이면 제한 X
+        // 이미지인 경우 허용되는 최대 높이
+        $config['max_height']  = '0'; // 픽셀단위. 0이면 제한 X 
+
+        $this->load->library('upload', $config);
+
+        // 위 까지는 설정임.
+        // 여기부터가 실제로 파일 업로드 처리
+        if(!$this->upload->do_upload('user_upload_file')) {
+            //$error = array('error' => $this->upload->display_errors());
+            //$this->load->view('upload_form', $error);
+
+            // 임시로 에러 메시지 출력
+            echo $this->upload->display_errors();
+        }
+        else {
+            $data = array('upload_data' => $this->upload->data());
+            //$this->load->view('upload_success', $data);
+
+            // 임시
+            echo 'success';
+            var_dump($data);
+        }
+
+    }
+    
+    public function upload() {
+        $this->_head();
+
+        $this->load->view('topic/upload_form');
 
         $this->_footer();
     }
