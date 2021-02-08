@@ -1,8 +1,7 @@
 <form action="/ci_opentutorials/index.php/topic/add" method="post" class="span10">
-
-    <?php 
+    <?php
         // ci library 인 form_validation 의 에러메시지 표출
-        echo validation_errors(); 
+        echo validation_errors();
     ?>
 
     <input type="text" name="title" placeholder="제목" class="span12">
@@ -10,3 +9,10 @@
 
     <input class="btn" type="submit">
 </form>
+
+<!-- ckeditor 추가 -->
+<script src="/ci_opentutorials/static/lib/ckeditor/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace('description');
+</script>
