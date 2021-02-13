@@ -55,6 +55,11 @@ class Topic extends CI_Controller
 
     // function name 앞에 _ 를 붙이면 uri routing 에 대한 private method 가 됨.
     function _head() {
+        //var_dump($this->session->userdata('session_test'));  // 값이 없으면 false (or null) 출력
+        //$this->session->set_userdata('session_test', 'starseat');
+
+        //var_dump($this->session->all_userdata());
+
         $this->load->config('topic_config');  // 파일명 써줘야함.
 
         $this->load->view('topic/header');
@@ -107,6 +112,17 @@ class Topic extends CI_Controller
     }
 
     public function add() {
+
+        // 로그인 필요
+        
+        // 로그인이 되어 있지 않다면 로그인 페이지로 redirection
+        if( ! $this->session->userdata('is_login') ) {
+            $this->load->helper('url');
+            redirect('/auth/login');  // redirect 는 url library 필요
+        }
+
+        // 로그인이 되어있다면 밑에 코드 실행
+
         $this->_head();
 
         // 테스트용
@@ -177,7 +193,7 @@ class Topic extends CI_Controller
 
             // 임시
             echo 'success';
-            var_dump($data);
+            //var_dump($data);
         }
     }
 

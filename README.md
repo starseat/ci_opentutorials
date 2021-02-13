@@ -31,3 +31,4 @@ config 분기
 한국 사용자 포럼 : http://codeigniter-kr.org/
 CK Editor : https://ckeditor.com/ckeditor-4/download/
 CK Editor 메뉴얼 : https://ckeditor.com/docs/ckeditor4/latest/guide/dev_installation.html
+안전한 패스워드 저장 : https://d2.naver.com/helloworld/318732
