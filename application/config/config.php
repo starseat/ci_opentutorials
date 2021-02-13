@@ -114,7 +114,7 @@ $config['enable_hooks'] = FALSE;
 | https://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'MY_';  // ci 의 core class 를 상속 받으려면 MY_ 를 붙여줘야 하지만 이부분을 수정하여 prefix 를 수정 가능.
 
 /*
 |--------------------------------------------------------------------------

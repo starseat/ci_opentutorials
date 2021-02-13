@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 // controllers/topic 에서 topic 은 검색 주소란의 링크주소가됨.
 // Topic 은 해당 파일명에서 앞에만 대문자로 작성해야함.
-class Topic extends CI_Controller
+class Topic extends MY_Controller
 {
     function __construct()
     {
@@ -60,16 +60,22 @@ class Topic extends CI_Controller
 
         //var_dump($this->session->all_userdata());
 
-        $this->load->config('topic_config');  // 파일명 써줘야함.
+        // $this->load->config('topic_config');  // 파일명 써줘야함.
+        // $this->load->view('topic/header');
 
-        $this->load->view('topic/header');
+        parent::_head();
+        $this->_sidebar();
+    }
+
+    function _sidebar() {
         $topics = $this->topic_model->gets();
         $this->load->view('topic/list', array('topics' => $topics));
     }
 
-    function _footer() {
-        $this->load->view('topic/footer');
-    }
+    // 부모 class 인 MY_Controller 로 옮김.
+    // function _footer() {
+    //     $this->load->view('topic/footer');
+    // }
 
     // ~/topic/get/1  이런식으로 get 뒤에 param 을 받고 싶으면 다음과 같이 사용
     // public function get($id) {
