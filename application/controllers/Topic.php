@@ -166,6 +166,28 @@ class Topic extends MY_Controller
 
             $topic_id = $this->topic_model->add($this->input->post('title'), $this->input->post('description'));
 
+            // 메일 전송 start
+            $this->load->model('user_mode');
+            $users = $this->user_model->gets();
+
+            $this->load->library('email');
+            $this->email->initialize(array('mailtype' => 'html'));
+            foreach($users as $user) {
+                //var_dump($user);
+
+                $this->email->from('sender@test.com', 'ci_tester'); // 보내는 사람
+                $this->email->to($user->email);  // 받을 사람
+                //$this->email->cc();
+                //$this->email->bcc();
+
+                $this->email->subject('새로운 글이 등록되었습니다.');
+                $this->email->message('<a href="' . site_url('/topic/get/' . $topic_id) . '">' . $this->input->post('title') . '</a>');
+
+                $this->email->send();
+
+            }
+            // 메일 전송 end
+
             $this->load->helper('url');  // redirect 사용 가능
             redirect('/topic/get/' . $topic_id);  // /ci_opentutorials/index.php/ 은 입력 안해도 됨.
         }        
