@@ -124,7 +124,13 @@ class Topic extends MY_Controller
         // 로그인이 되어 있지 않다면 로그인 페이지로 redirection
         if( ! $this->session->userdata('is_login') ) {
             $this->load->helper('url');
-            redirect('/auth/login');  // redirect 는 url library 필요
+            //redirect('/auth/login');  // redirect 는 url library 필요
+
+            // 페이지 이동시키기
+            //redirect('/auth/login?returnURL=' . rawurlencode('http://localhost/ci_opentutorials/index.php/topic/add?page=2'));
+            // rawurldecode() : url encoding
+
+            redirect('/auth/login?returnURL=' . rawurlencode(site_url('/topic/add')));
         }
 
         // 로그인이 되어있다면 밑에 코드 실행

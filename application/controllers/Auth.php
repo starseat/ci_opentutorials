@@ -8,7 +8,9 @@ class Auth extends MY_Controller {
     public function login() {
         $this->_footer();
 
-        $this->load->view('login');
+        // 로그인 페이지에 이전 url 받을 returnURL 추가
+        $this->load->helper('url'); // login.php 에서 site_url 을 사용하기 떄문에 여기서 추가해줌
+        $this->load->view('login', array('returnURL' => $this->input->get('returnURL')));
 
         $this->_footer();  // MY_Controller 에 있음.
     }
@@ -25,7 +27,13 @@ class Auth extends MY_Controller {
             $this->session->set_userdata('is_login', true);
 
             $this->load->helper('url');
-            redirect('/topic/add');  // 이전에 있던 페이지로 돌려보내는건 다음에...
+            //redirect('/topic/add');  // 이전에 있던 페이지로 돌려보내는건 다음에...
+
+            $returnURL = $this->input->get('returnURL');
+            if($returnURL === false) {
+                $returnURL = '/';
+            }
+            redirect($returnURL);
         }
         else {
             //echo '불일치';
