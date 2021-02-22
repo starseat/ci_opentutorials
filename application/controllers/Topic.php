@@ -175,7 +175,8 @@ class Topic extends MY_Controller
             foreach($users as $user) {
                 //var_dump($user);
 
-                $this->email->from('sender@test.com', 'ci_tester'); // 보내는 사람
+                $this->email->from('sender@test.com', 'ci_tester'); // 보내는 사람 
+                //xdebug_break();
                 $this->email->to($user->email);  // 받을 사람
                 //$this->email->cc();
                 //$this->email->bcc();
