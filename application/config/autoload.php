@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session');  // 여기다가 auto load 항목 추가
+$autoload['libraries'] = array();  // 여기다가 auto load 항목 추가  // MY_Controller 에서 추가함.
 
 /*
 | -------------------------------------------------------------------
