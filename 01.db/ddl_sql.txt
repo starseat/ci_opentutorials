@@ -31,3 +31,11 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
     `data` blob NOT NULL,
     KEY `ci_sessions_timestamp` (`timestamp`)
 ) COLLATE='utf8mb4_unicode_ci' ENGINE=InnoDB;
+
+
+CREATE TABLE `batch` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `job_name` varchar(50) NOT NULL,
+  `context` text NOT NULL,
+  PRIMARY KEY (`id`)
+) COLLATE='utf8mb4_unicode_ci' ENGINE=InnoDB;

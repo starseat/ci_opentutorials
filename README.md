@@ -32,3 +32,5 @@ config 분기
 CK Editor : https://ckeditor.com/ckeditor-4/download/
 CK Editor 메뉴얼 : https://ckeditor.com/docs/ckeditor4/latest/guide/dev_installation.html
 안전한 패스워드 저장 : https://d2.naver.com/helloworld/318732
+메시징 큐 종류 : https://stackoverflow.com/questions/731233/activemq-or-rabbitmq-or-zeromq-or/5350026#5350026
+리눅스 크론탭 : https://opentutorials.org/module/72/1013
